@@ -10,6 +10,7 @@ import com.twitter.hbc.httpclient.auth.OAuth1;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
@@ -30,6 +31,17 @@ public class Application {
     private Authentication auth;
     private List<Client> clients;
     private int clientNo;
+
+    public static void main(String[] args) {
+        final Application application = new Application();
+        List<Integer> connections = new ArrayList<Integer>();
+        connections.add(application.beginConnection());
+        Scanner input = new Scanner(System.in);
+        while(!input.hasNext()) { // While no key has been pressed
+            // do code here
+        }
+        connections.forEach(connection -> application.closeConnection(connection));
+    }
 
     public Application() {
         this.configs = new Configs();
