@@ -34,7 +34,7 @@ public class Application {
 
     public static void main(String[] args) {
         final Application application = new Application();
-        List<Integer> connections = new ArrayList<Integer>();
+        List<Integer> connections = new ArrayList<>();
         connections.add(application.beginConnection());
         Scanner input = new Scanner(System.in);
         while(!input.hasNext()) { // While no key has been pressed
@@ -47,14 +47,14 @@ public class Application {
         this.configs = new Configs();
         this.hosts = new HttpHosts(this.configs.getString("twitterHost"));
         this.filterEndpoint = new StatusesFilterEndpoint();
-        this.messageQueue = new LinkedBlockingQueue<String>(10000);
-        this.eventQueue = new LinkedBlockingQueue<Event>(1000);
+        this.messageQueue = new LinkedBlockingQueue<>(10000);
+        this.eventQueue = new LinkedBlockingQueue<>(1000);
         this.auth = new OAuth1(this.configs.getString("twitterConsumerKey"),
                 this.configs.getString("twitterConsumerSecret"),
                 this.configs.getString("twitterToken"),
                 this.configs.getString("twitterSecret"));
         this.clientNo = 1;
-        this.clients = new ArrayList<Client>();
+        this.clients = new ArrayList<>();
     }
 
     public int beginConnection() {
